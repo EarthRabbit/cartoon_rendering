@@ -23,11 +23,13 @@ cartoon rendering tool using opencv
 
 4-1. k-means 기법을 이용하여 대표적인 색을 추려 가장 자주 나오는 이미지의 색을 대표로 하여 K색으로 바꾼다.
 
+  ```bibtex
   data = np.float32(img).reshape(-1, 3)
   criteria = (cv.TermCriteria_EPS + cv.TermCriteria_MAX_ITER, 20, 0.1)
   _, labels, centers = cv.kmeans(data, k, None, criteria, 10, cv.KMEANS_RANDOM_CENTERS)
   centers = np.uint8(centers)
-  clustered_img = centers[labels.flatten()].reshape(img.shape) 
+  clustered_img = centers[labels.flatten()].reshape(img.shape)
+  ```
 
 5. cv.bitwise_and()를 이용하여 처리한 사진에 테두리를 더한다.
 * cartoon = cv.bitwise_and(color, color, mask=edges)
