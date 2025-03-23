@@ -9,17 +9,24 @@ cartoon rendering tool using opencv
 이미지를 만화 그림체로 바꾸는 과정은 다음과 같다.
 
 1. 이미지를 흑백으로 바꾼다.
-  * gray = cv.cvtColor(img, cv.COLOR_BGR2GRAY)
+  ```bibtex
+  gray = cv.cvtColor(img, cv.COLOR_BGR2GRAY)
+  ```
 
 2. Median blur(중간값 보정)를 이용하여 이미지에 있던 노이즈를 없앤다.
-  * gray = cv.medianBlur(gray, 5)
-
+  ```bibtex
+  gray = cv.medianBlur(gray, 5)
+  ```
 3. cv의 Adaptive thresholding(적응형 임계값)을 이용하여 테두리를 만든다. 
-  * edges = cv.adaptiveThreshold(gray, 255, cv.ADAPTIVE_THRESH_MEAN_C, cv.THRESH_BINARY, 7, 7)
+  ```bibtex
+  edges = cv.adaptiveThreshold(gray, 255, cv.ADAPTIVE_THRESH_MEAN_C, cv.THRESH_BINARY, 7, 7)
+  ```
   * 마지막 2개의 parameter를 조절함으로써 테두리를 적용하는 임계점을 조정할 수 있다.
 
 4. 이미지를 컬러 이미지로 바꾼다.
-  * color = cv.bilateralFilter(img, 9, 300, 300)
+  ```bibtex
+  color = cv.bilateralFilter(img, 9, 300, 300)
+  ```
 
 4-1. k-means 기법을 이용하여 대표적인 색을 추려 가장 자주 나오는 이미지의 색을 대표로 하여 K색으로 바꾼다.
 
